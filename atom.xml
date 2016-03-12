@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[哈哈爱护的吧地博客]]></title>
   <link href="http://liruixpc11.github.io/atom.xml" rel="self"/>
   <link href="http://liruixpc11.github.io/"/>
-  <updated>2016-03-12T09:59:46+08:00</updated>
+  <updated>2016-03-12T11:08:06+08:00</updated>
   <id>http://liruixpc11.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[哈哈爱护的吧]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
