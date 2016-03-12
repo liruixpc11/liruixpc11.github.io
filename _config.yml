@@ -3,10 +3,11 @@
 # ----------------------- #
 
 url: http://liruixpc11.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
-simple_search: https://www.google.com/search
+title: 哈哈爱护的吧地博客
+subtitle: Blog Like a Hacker.
+author: 哈哈爱护的吧
+#simple_search: https://www.google.com/search
+simple_search: https://www.baidu.com
 description:
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
@@ -99,3 +100,9 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+# DuoShuo comment
+duoshuo_comment: true
+
+# JiaThis Share
+jiathis_share: true
