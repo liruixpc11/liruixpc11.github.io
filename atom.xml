@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://liruixpc11.github.io/atom.xml" rel="self"/>
+  <link href="http://liruixpc11.github.io/"/>
+  <updated>2016-03-12T09:57:45+08:00</updated>
+  <id>http://liruixpc11.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA['First_post']]></title>
+    <link href="http://liruixpc11.github.io/blog/2016/03/12/first-post/"/>
+    <updated>2016-03-12T09:37:52+08:00</updated>
+    <id>http://liruixpc11.github.io/blog/2016/03/12/first-post</id>
+    <content type="html"><![CDATA[<h1>学习OctoPress搭建博客</h1>
+
+<h2>一些小问题</h2>
+
+<ol>
+<li>修改Gemfile，修改source为 <code>https://ruby.taobao.com</code></li>
+</ol>
+
+
+<h2>一些例子</h2>
+
+<figure class='code'><figcaption><span>This is a java demo</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;hello, world&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>
