@@ -4,7 +4,7 @@
   <title><![CDATA[哈哈爱护的吧地博客]]></title>
   <link href="http://liruixpc11.github.io/atom.xml" rel="self"/>
   <link href="http://liruixpc11.github.io/"/>
-  <updated>2016-03-12T11:08:06+08:00</updated>
+  <updated>2016-03-12T20:49:28+08:00</updated>
   <id>http://liruixpc11.github.io/</id>
   <author>
     <name><![CDATA[哈哈爱护的吧]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Docker学习01]]></title>
+    <link href="http://liruixpc11.github.io/blog/2016/03/12/docker-study-01/"/>
+    <updated>2016-03-12T20:19:16+08:00</updated>
+    <id>http://liruixpc11.github.io/blog/2016/03/12/docker-study-01</id>
+    <content type="html"><![CDATA[<h1>Docker基本情况</h1>
+
+<h2>隔离</h2>
+
+<ul>
+<li>文件系统</li>
+<li>进程</li>
+<li>网络</li>
+<li>资源隔离与分组，通过cgroups</li>
+</ul>
+
+
+<h2>数据卷</h2>
+
+<p>可以方便的用于文件共享；只读挂载可以方便的放置 <strong>FLAG</strong>。</p>
+
+<blockquote><p>-v /data:/datavolume:ro</p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA['学习OctoPress]]></title>
