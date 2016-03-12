@@ -4,7 +4,7 @@
   <title><![CDATA[哈哈爱护的吧地博客]]></title>
   <link href="http://liruixpc11.github.io/atom.xml" rel="self"/>
   <link href="http://liruixpc11.github.io/"/>
-  <updated>2016-03-12T20:49:28+08:00</updated>
+  <updated>2016-03-12T21:44:02+08:00</updated>
   <id>http://liruixpc11.github.io/</id>
   <author>
     <name><![CDATA[哈哈爱护的吧]]></name>
@@ -34,7 +34,43 @@
 
 <p>可以方便的用于文件共享；只读挂载可以方便的放置 <strong>FLAG</strong>。</p>
 
-<blockquote><p>-v /data:/datavolume:ro</p></blockquote>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>docker run -v /data:/datavolume:ro</span></code></pre></td></tr></table></div></figure>
+
+
+<p>数据卷容器可以方便地实现多个容器之间的数据共享。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>docker run --volumes-from CNAME</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>常用命令</h2>
+
+<h3>容器控制</h3>
+
+<ul>
+<li>docker run：运行</li>
+<li>Ctrl-P Ctrl-Q： 退出挂载</li>
+<li>docker attach：挂载</li>
+<li>docker start：启动容器，可以使用 <strong>-i</strong> 选项</li>
+<li>docker exec：在运行的容器中执行命令</li>
+<li>docker stop：停止容器，实际就是发送Ctrl-C</li>
+<li>docker kill：停止容器，直接终止进程</li>
+</ul>
+
+
+<h2>实例</h2>
+
+<h3>创建Web站点</h3>
+
+<p>创建导出80端口的容器：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>docker run -p <span class="m">80</span> --name web -it ubuntu /bin/bash
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装nginx、vim；编辑nginx配置；创建网页文件；运行nginx。</p>
 ]]></content>
   </entry>
   
