@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://liruixpc11.github.io/atom.xml" rel="self"/>
   <link href="http://liruixpc11.github.io/"/>
-  <updated>2016-03-12T09:57:45+08:00</updated>
+  <updated>2016-03-12T09:59:46+08:00</updated>
   <id>http://liruixpc11.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA['First_post']]></title>
+    <title type="html"><![CDATA['学习OctoPress]]></title>
     <link href="http://liruixpc11.github.io/blog/2016/03/12/first-post/"/>
     <updated>2016-03-12T09:37:52+08:00</updated>
     <id>http://liruixpc11.github.io/blog/2016/03/12/first-post</id>
