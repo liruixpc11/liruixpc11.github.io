@@ -4,7 +4,7 @@
   <title><![CDATA[哈哈爱护的吧地博客]]></title>
   <link href="http://liruixpc11.github.io/atom.xml" rel="self"/>
   <link href="http://liruixpc11.github.io/"/>
-  <updated>2016-03-12T21:44:02+08:00</updated>
+  <updated>2016-03-13T11:13:11+08:00</updated>
   <id>http://liruixpc11.github.io/</id>
   <author>
     <name><![CDATA[哈哈爱护的吧]]></name>
@@ -58,6 +58,54 @@
 <li>docker kill：停止容器，直接终止进程</li>
 </ul>
 
+
+<h2>构建Docker镜像</h2>
+
+<ul>
+<li>docker commit</li>
+<li>Dockerfile</li>
+</ul>
+
+
+<h3>Dockerfile</h3>
+
+<p>思路值得借鉴，从一个现有基础镜像出发，根据配置文件自动化地生成新的镜像。但是Windows有些软件安装和配置如何从命令行完成需要进一步探索。</p>
+
+<h2>Docker网络连接</h2>
+
+<h3>基于Linux网桥</h3>
+
+<p>类似于VMware Workstation中的HostOnly模式，允许主机、虚拟机之间通信。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>apt-get install bridge-utils
+</span><span class='line'>brctl add br0
+</span><span class='line'>ifconfig br0 192.168.xx.1/24
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;DOCKER_OPTS=&quot;-b br0&quot;&#39;</span> &gt;&gt; /etc/default/docker
+</span><span class='line'>service docker restart
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>有个问题需要注意：每次启动的时候，虚拟机的IP地址都可能不一样。但是可以通过<code>--link=cname:alias</code>来指定主机内部别名。</p>
+
+<h3>通过iptables控制容器间网络连接</h3>
+
+<p>通过<code>--icc=false --iptables=true</code>启用，在DOCKER规则链中控制容器间连接。通过<code>--link</code>选项确定哪些容器之间可以连接。</p>
+
+<h3>与外部网络的连接</h3>
+
+<p>查看IP转发是否开启：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo sysctl net.ipv4.conf.all.forwarding
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>搭建Docker私有Registry</h2>
 
 <h2>实例</h2>
 
