@@ -7,8 +7,8 @@
 	<meta name="author" content="哈哈爱护的吧">
 
 	
-	<meta name="description" content="Pcap文件Java解析器调优记 主要性能优化点 判断是否还有包的时候，调用了FileChannel的position和size函数；改为自行计算后，时间从800+ms降到了500+ms。经过本步骤优化后，性能主要瓶颈在IO上。
-使用BufferedInputStream代替FileChannel &hellip;">
+	<meta name="description" content="主要性能优化点 判断是否还有包的时候，调用了FileChannel的position和size函数；改为自行计算后，时间从800+ms降到了500+ms。经过本步骤优化后，性能主要瓶颈在IO上。
+使用BufferedInputStream代替FileChannel，时间从500+ms降低到100+ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -78,9 +78,7 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Pcap文件Java解析器调优记</h2>
-	<div class="entry-content"><h1>Pcap文件Java解析器调优记</h1>
-
-<h2>主要性能优化点</h2>
+	<div class="entry-content"><h1>主要性能优化点</h1>
 
 <ol>
 <li>判断是否还有包的时候，调用了FileChannel的position和size函数；改为自行计算后，时间从800+ms降到了500+ms。经过本步骤优化后，性能主要瓶颈在IO上。</li>
@@ -92,7 +90,7 @@
 
 <p>性能参照：仅仅读取内容和必要的长度字段，不解析其它内容，大约是90 -100ms。</p>
 
-<h2>非性能优化点</h2>
+<h1>非性能优化点</h1>
 
 <ol>
 <li>重用PacketHeader的16字节缓冲区，而不是每次都调用ByteBuffer.allocate分配；性能基本不变。</li>
