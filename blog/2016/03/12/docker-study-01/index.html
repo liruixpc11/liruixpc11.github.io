@@ -98,14 +98,16 @@ docker &hellip;">
 
 <p>可以方便的用于文件共享；只读挂载可以方便的放置 <strong>FLAG</strong>。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>docker run -v /data:/datavolume:ro</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>docker run -v /data:/datavolume:ro
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>数据卷容器可以方便地实现多个容器之间的数据共享。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>docker run --volumes-from CNAME</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>docker run --volumes-from CNAME
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>常用命令</h2>
@@ -168,6 +170,17 @@ docker &hellip;">
 </pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo sysctl net.ipv4.conf.all.forwarding
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>通过iptables限制外部对容器的访问，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>iptables -I DOCKER -s src_ip -d dst_ip -p TCP --dport <span class="m">80</span> -j DROP
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>使用Open vSwitch实现跨服务器连接</h3>
+
+<p>创建Open vSwitch接口，然后挂载到bridge上。</p>
 
 <h2>搭建Docker私有Registry</h2>
 

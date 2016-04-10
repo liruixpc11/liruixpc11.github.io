@@ -7,12 +7,7 @@
 	<meta name="author" content="哈哈爱护的吧">
 
 	
-	<meta name="description" content="Docker基本情况 隔离 文件系统
-进程
-网络
-资源隔离与分组，通过cgroups 数据卷 可以方便的用于文件共享；只读挂载可以方便的放置 FLAG。 1
-docker run -v /data:/datavolume:ro 数据卷容器可以方便地实现多个容器之间的数据共享。 1
-docker &hellip;">
+	<meta name="description" content="Pcap文件Java解析器调优记 主要性能优化点 判断是否还有包的时候，调用了FileChannel的position和size函数；改为自行计算后，时间从800+ms降到了500+ms。经过本步骤优化后，性能主要瓶颈在IO上。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -86,6 +81,55 @@ docker &hellip;">
     <article class="post">
 	<h2 class="title">
 		
+		<a href="/blog/2016/04/10/pcap-parser/">
+		
+			Pcap文件Java解析器调优记</a>
+	</h2>
+	<div class="entry-content">
+		<h1>Pcap文件Java解析器调优记</h1>
+
+<h2>主要性能优化点</h2>
+
+<ol>
+<li>判断是否还有包的时候，调用了FileChannel的position和size函数；改为自行计算后，时间从800+ms降到了500+ms。经过本步骤优化后，性能主要瓶颈在IO上。</li>
+<li>使用BufferedInputStream代替FileChannel，时间从500+ms降低到100+ms，性能提升的原因是使用缓存可以降低IO次数。经过本步骤优化后，性能开销的大约1/3到1/2花在了解析上。</li>
+<li>原来以为反射会降低性能，但是改用侵入式接口直接读取数组后，性能提升大约5-10%。如果字段很多或者调用很多次的话是值得优化的。</li>
+<li>使用new代替反射调用Constructor，大约168ms→142ms，性能提升约10%。</li>
+</ol>
+
+
+<p>性能参照：仅仅读取内容和必要的长度字段，不解析其它内容，大约是90 -100ms。</p>
+
+<h2>非性能优化点</h2>
+
+<ol>
+<li>重用PacketHeader的16字节缓冲区，而不是每次都调用ByteBuffer.allocate分配；性能基本不变。</li>
+</ol>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Apr 10th, 2016</div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
 		<a href="/blog/2016/03/12/docker-study-01/">
 		
 			Docker学习01</a>
@@ -107,14 +151,16 @@ docker &hellip;">
 
 <p>可以方便的用于文件共享；只读挂载可以方便的放置 <strong>FLAG</strong>。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>docker run -v /data:/datavolume:ro</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>docker run -v /data:/datavolume:ro
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>数据卷容器可以方便地实现多个容器之间的数据共享。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>docker run --volumes-from CNAME</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>docker run --volumes-from CNAME
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>常用命令</h2>
@@ -178,6 +224,17 @@ docker &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>通过iptables限制外部对容器的访问，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>iptables -I DOCKER -s src_ip -d dst_ip -p TCP --dport <span class="m">80</span> -j DROP
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>使用Open vSwitch实现跨服务器连接</h3>
+
+<p>创建Open vSwitch接口，然后挂载到bridge上。</p>
+
 <h2>搭建Docker私有Registry</h2>
 
 <h2>实例</h2>
@@ -218,7 +275,7 @@ Mar 12th, 2016</div>
 		
 		<a href="/blog/2016/03/12/first-post/">
 		
-			'学习OctoPress</a>
+			学习OctoPress</a>
 	</h2>
 	<div class="entry-content">
 		<h1>学习OctoPress搭建博客</h1>

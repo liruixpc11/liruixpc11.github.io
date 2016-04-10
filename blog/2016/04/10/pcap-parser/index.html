@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>about - 哈哈爱护的吧地博客</title>
+	<title>Pcap文件Java解析器调优记 - 哈哈爱护的吧地博客</title>
 	<meta name="author" content="哈哈爱护的吧">
 
 	
-	<meta name="description" content="关于我 一个程序员，码农。
-">
+	<meta name="description" content="Pcap文件Java解析器调优记 主要性能优化点 判断是否还有包的时候，调用了FileChannel的position和size函数；改为自行计算后，时间从800+ms降到了500+ms。经过本步骤优化后，性能主要瓶颈在IO上。
+使用BufferedInputStream代替FileChannel &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -76,13 +76,42 @@
 	
 		
 	
-	<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">About</h1>
-    
-    <div class="entry-content"><h1>关于我</h1>
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Pcap文件Java解析器调优记</h2>
+	<div class="entry-content"><h1>Pcap文件Java解析器调优记</h1>
 
-<p>一个程序员，码农。</p>
+<h2>主要性能优化点</h2>
+
+<ol>
+<li>判断是否还有包的时候，调用了FileChannel的position和size函数；改为自行计算后，时间从800+ms降到了500+ms。经过本步骤优化后，性能主要瓶颈在IO上。</li>
+<li>使用BufferedInputStream代替FileChannel，时间从500+ms降低到100+ms，性能提升的原因是使用缓存可以降低IO次数。经过本步骤优化后，性能开销的大约1/3到1/2花在了解析上。</li>
+<li>原来以为反射会降低性能，但是改用侵入式接口直接读取数组后，性能提升大约5-10%。如果字段很多或者调用很多次的话是值得优化的。</li>
+<li>使用new代替反射调用Constructor，大约168ms→142ms，性能提升约10%。</li>
+</ol>
+
+
+<p>性能参照：仅仅读取内容和必要的长度字段，不解析其它内容，大约是90 -100ms。</p>
+
+<h2>非性能优化点</h2>
+
+<ol>
+<li>重用PacketHeader的16字节缓冲区，而不是每次都调用ByteBuffer.allocate分配；性能基本不变。</li>
+</ol>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Apr 10th, 2016</div>
+	<div class="tags">
+
+</div>
+	
 </div>
 </article>
 
@@ -112,6 +141,27 @@
 </div>
 
 
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="duoshuo_thread" aria-live="polite"><!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="/blog/2016/04/10/pcap-parser" data-title="Pcap文件Java解析器调优记" data-url="http://liruixpc11.github.io/blog/2016/04/10/pcap-parser/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"liruixpc11"};
+			(function() {
+						var ds = document.createElement('script');
+								ds.type = 'text/javascript';ds.async = true;
+										ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+												ds.charset = 'UTF-8';
+														(document.getElementsByTagName('head')[0] 
+																 || document.getElementsByTagName('body')[0]).appendChild(ds);
+																	})();
+																		</script>
+
+</div>
+</section>
 
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2016
