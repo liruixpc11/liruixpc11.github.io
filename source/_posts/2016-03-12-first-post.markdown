@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "'学习OctoPress"
+title: "学习OctoPress"
 date: 2016-03-12 09:37:52 +0800
 comments: true
 categories: 
