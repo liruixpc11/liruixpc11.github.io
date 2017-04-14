@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-04-14T12:31:55+08:00</updated><id>/</id><title type="html">Li Rui’s Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="/jekyll/update/2017/04/14/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-04-14T12:23:41+08:00</published><updated>2017-04-14T12:23:41+08:00</updated><id>/jekyll/update/2017/04/14/welcome-to-jekyll</id><content type="html" xml:base="/jekyll/update/2017/04/14/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-14T17:24:36+08:00</updated><id>http://localhost:4000/</id><title type="html">Li Rui’s Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2017/04/14/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-04-14T12:23:41+08:00</published><updated>2017-04-14T12:23:41+08:00</updated><id>http://localhost:4000/jekyll/update/2017/04/14/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2017/04/14/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
@@ -11,15 +11,15 @@
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Using Octopress</title><link href="/2017/04/14/using-octopress.html" rel="alternate" type="text/html" title="Using Octopress" /><published>2017-04-14T11:16:01+08:00</published><updated>2017-04-14T11:16:01+08:00</updated><id>/2017/04/14/using-octopress</id><content type="html" xml:base="/2017/04/14/using-octopress.html"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Compile ns2 in Linux Mint 18</title><link href="/misc/2017/01/26/compile-ns2-in-linux-mint-18.html" rel="alternate" type="text/html" title="Compile ns2 in Linux Mint 18" /><published>2017-01-26T08:33:17+08:00</published><updated>2017-01-26T08:33:17+08:00</updated><id>/misc/2017/01/26/compile-ns2-in-linux-mint-18</id><content type="html" xml:base="/misc/2017/01/26/compile-ns2-in-linux-mint-18.html">&lt;p&gt;编译NS2的时候，&lt;code class=&quot;highlighter-rouge&quot;&gt;${NS_DIR}/ns-2.35/linkstate/ls.h&lt;/code&gt;报错：&lt;code class=&quot;highlighter-rouge&quot;&gt;erase not in this scope&lt;/code&gt;（大概是这样，记不清了）。修改该文件的第137行如下：&lt;/p&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Using Octopress</title><link href="http://localhost:4000/2017/04/14/using-octopress.html" rel="alternate" type="text/html" title="Using Octopress" /><published>2017-04-14T11:16:01+08:00</published><updated>2017-04-14T11:16:01+08:00</updated><id>http://localhost:4000/2017/04/14/using-octopress</id><content type="html" xml:base="http://localhost:4000/2017/04/14/using-octopress.html"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Compile ns2 in Linux Mint 18</title><link href="http://localhost:4000/misc/2017/01/26/compile-ns2-in-linux-mint-18.html" rel="alternate" type="text/html" title="Compile ns2 in Linux Mint 18" /><published>2017-01-26T08:33:17+08:00</published><updated>2017-01-26T08:33:17+08:00</updated><id>http://localhost:4000/misc/2017/01/26/compile-ns2-in-linux-mint-18</id><content type="html" xml:base="http://localhost:4000/misc/2017/01/26/compile-ns2-in-linux-mint-18.html">&lt;p&gt;编译NS2的时候，&lt;code class=&quot;highlighter-rouge&quot;&gt;${NS_DIR}/ns-2.35/linkstate/ls.h&lt;/code&gt;报错：&lt;code class=&quot;highlighter-rouge&quot;&gt;erase not in this scope&lt;/code&gt;（大概是这样，记不清了）。修改该文件的第137行如下：&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;c++
-void eraseAll() { erase(baseMap::begin(), baseMap::end()); }
-&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;eraseAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;erase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;baseMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;baseMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;c++
-void eraseAll() { baseMap::erase(baseMap::begin(), baseMap::end()); }
-&lt;/code&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">编译NS2的时候，${NS_DIR}/ns-2.35/linkstate/ls.h报错：erase not in this scope（大概是这样，记不清了）。修改该文件的第137行如下：</summary></entry><entry><title type="html">Pcap文件Java解析器调优记</title><link href="/2016/04/10/pcap-parser.html" rel="alternate" type="text/html" title="Pcap文件Java解析器调优记" /><published>2016-04-10T22:02:45+08:00</published><updated>2016-04-10T22:02:45+08:00</updated><id>/2016/04/10/pcap-parser</id><content type="html" xml:base="/2016/04/10/pcap-parser.html">&lt;h1 id=&quot;section&quot;&gt;主要性能优化点&lt;/h1&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;eraseAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;baseMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;erase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;baseMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;baseMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">编译NS2的时候，${NS_DIR}/ns-2.35/linkstate/ls.h报错：erase not in this scope（大概是这样，记不清了）。修改该文件的第137行如下：</summary></entry><entry><title type="html">Pcap文件Java解析器调优记</title><link href="http://localhost:4000/2016/04/10/pcap-parser.html" rel="alternate" type="text/html" title="Pcap文件Java解析器调优记" /><published>2016-04-10T22:02:45+08:00</published><updated>2016-04-10T22:02:45+08:00</updated><id>http://localhost:4000/2016/04/10/pcap-parser</id><content type="html" xml:base="http://localhost:4000/2016/04/10/pcap-parser.html">&lt;h1 id=&quot;主要性能优化点&quot;&gt;主要性能优化点&lt;/h1&gt;
 
 &lt;ol&gt;
   &lt;li&gt;判断是否还有包的时候，调用了FileChannel的position和size函数；改为自行计算后，时间从800+ms降到了500+ms。经过本步骤优化后，性能主要瓶颈在IO上。&lt;/li&gt;
@@ -30,13 +30,13 @@ void eraseAll() { baseMap::erase(baseMap::begin(), baseMap::end()); }
 
 &lt;p&gt;性能参照：仅仅读取内容和必要的长度字段，不解析其它内容，大约是90 -100ms。&lt;/p&gt;
 
-&lt;h1 id=&quot;section-1&quot;&gt;非性能优化点&lt;/h1&gt;
+&lt;h1 id=&quot;非性能优化点&quot;&gt;非性能优化点&lt;/h1&gt;
 
 &lt;ol&gt;
   &lt;li&gt;重用PacketHeader的16字节缓冲区，而不是每次都调用ByteBuffer.allocate分配；性能基本不变。&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><summary type="html">主要性能优化点</summary></entry><entry><title type="html">Docker学习01</title><link href="/2016/03/12/docker-study-01.html" rel="alternate" type="text/html" title="Docker学习01" /><published>2016-03-12T20:19:16+08:00</published><updated>2016-03-12T20:19:16+08:00</updated><id>/2016/03/12/docker-study-01</id><content type="html" xml:base="/2016/03/12/docker-study-01.html">&lt;h1 id=&quot;docker&quot;&gt;Docker基本情况&lt;/h1&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">主要性能优化点</summary></entry><entry><title type="html">Docker学习01</title><link href="http://localhost:4000/2016/03/12/docker-study-01.html" rel="alternate" type="text/html" title="Docker学习01" /><published>2016-03-12T20:19:16+08:00</published><updated>2016-03-12T20:19:16+08:00</updated><id>http://localhost:4000/2016/03/12/docker-study-01</id><content type="html" xml:base="http://localhost:4000/2016/03/12/docker-study-01.html">&lt;h1 id=&quot;docker基本情况&quot;&gt;Docker基本情况&lt;/h1&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;隔离&lt;/h2&gt;
+&lt;h2 id=&quot;隔离&quot;&gt;隔离&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;文件系统&lt;/li&gt;
@@ -45,22 +45,22 @@ void eraseAll() { baseMap::erase(baseMap::begin(), baseMap::end()); }
   &lt;li&gt;资源隔离与分组，通过cgroups&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;数据卷&lt;/h2&gt;
+&lt;h2 id=&quot;数据卷&quot;&gt;数据卷&lt;/h2&gt;
 
 &lt;p&gt;可以方便的用于文件共享；只读挂载可以方便的放置 &lt;strong&gt;FLAG&lt;/strong&gt;。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -v /data:/datavolume:ro
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -v /data:/datavolume:ro
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;数据卷容器可以方便地实现多个容器之间的数据共享。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run --volumes-from CNAME
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run --volumes-from CNAME
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;section-2&quot;&gt;常用命令&lt;/h2&gt;
+&lt;h2 id=&quot;常用命令&quot;&gt;常用命令&lt;/h2&gt;
 
-&lt;h3 id=&quot;section-3&quot;&gt;容器控制&lt;/h3&gt;
+&lt;h3 id=&quot;容器控制&quot;&gt;容器控制&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;docker run：运行&lt;/li&gt;
@@ -72,7 +72,7 @@ void eraseAll() { baseMap::erase(baseMap::begin(), baseMap::end()); }
   &lt;li&gt;docker kill：停止容器，直接终止进程&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;docker-1&quot;&gt;构建Docker镜像&lt;/h2&gt;
+&lt;h2 id=&quot;构建docker镜像&quot;&gt;构建Docker镜像&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;docker commit&lt;/li&gt;
@@ -83,13 +83,13 @@ void eraseAll() { baseMap::erase(baseMap::begin(), baseMap::end()); }
 
 &lt;p&gt;思路值得借鉴，从一个现有基础镜像出发，根据配置文件自动化地生成新的镜像。但是Windows有些软件安装和配置如何从命令行完成需要进一步探索。&lt;/p&gt;
 
-&lt;h2 id=&quot;docker-2&quot;&gt;Docker网络连接&lt;/h2&gt;
+&lt;h2 id=&quot;docker网络连接&quot;&gt;Docker网络连接&lt;/h2&gt;
 
-&lt;h3 id=&quot;linux&quot;&gt;基于Linux网桥&lt;/h3&gt;
+&lt;h3 id=&quot;基于linux网桥&quot;&gt;基于Linux网桥&lt;/h3&gt;
 
 &lt;p&gt;类似于VMware Workstation中的HostOnly模式，允许主机、虚拟机之间通信。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install bridge-utils
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install bridge-utils
 brctl add br0
 ifconfig br0 192.168.xx.1/24
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'DOCKER_OPTS=&quot;-b br0&quot;'&lt;/span&gt; &amp;gt;&amp;gt; /etc/default/docker
@@ -99,49 +99,49 @@ service docker restart
 
 &lt;p&gt;有个问题需要注意：每次启动的时候，虚拟机的IP地址都可能不一样。但是可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;--link=cname:alias&lt;/code&gt;来指定主机内部别名。&lt;/p&gt;
 
-&lt;h3 id=&quot;iptables&quot;&gt;通过iptables控制容器间网络连接&lt;/h3&gt;
+&lt;h3 id=&quot;通过iptables控制容器间网络连接&quot;&gt;通过iptables控制容器间网络连接&lt;/h3&gt;
 
 &lt;p&gt;通过&lt;code class=&quot;highlighter-rouge&quot;&gt;--icc=false --iptables=true&lt;/code&gt;启用，在DOCKER规则链中控制容器间连接。通过&lt;code class=&quot;highlighter-rouge&quot;&gt;--link&lt;/code&gt;选项确定哪些容器之间可以连接。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-4&quot;&gt;与外部网络的连接&lt;/h3&gt;
+&lt;h3 id=&quot;与外部网络的连接&quot;&gt;与外部网络的连接&lt;/h3&gt;
 
 &lt;p&gt;查看IP转发是否开启：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo sysctl net.ipv4.conf.all.forwarding
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo sysctl net.ipv4.conf.all.forwarding
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;p&gt;通过iptables限制外部对容器的访问，例如：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;iptables -I DOCKER -s src_ip -d dst_ip -p TCP --dport 80 -j DROP
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;iptables -I DOCKER -s src_ip -d dst_ip -p TCP --dport 80 -j DROP
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;open-vswitch&quot;&gt;使用Open vSwitch实现跨服务器连接&lt;/h3&gt;
+&lt;h3 id=&quot;使用open-vswitch实现跨服务器连接&quot;&gt;使用Open vSwitch实现跨服务器连接&lt;/h3&gt;
 
 &lt;p&gt;创建Open vSwitch接口，然后挂载到bridge上。&lt;/p&gt;
 
-&lt;h2 id=&quot;dockerregistry&quot;&gt;搭建Docker私有Registry&lt;/h2&gt;
+&lt;h2 id=&quot;搭建docker私有registry&quot;&gt;搭建Docker私有Registry&lt;/h2&gt;
 
-&lt;h2 id=&quot;section-5&quot;&gt;实例&lt;/h2&gt;
+&lt;h2 id=&quot;实例&quot;&gt;实例&lt;/h2&gt;
 
-&lt;h3 id=&quot;web&quot;&gt;创建Web站点&lt;/h3&gt;
+&lt;h3 id=&quot;创建web站点&quot;&gt;创建Web站点&lt;/h3&gt;
 
 &lt;p&gt;创建导出80端口的容器：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -p 80 --name web -it ubuntu /bin/bash
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -p 80 --name web -it ubuntu /bin/bash
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;安装nginx、vim；编辑nginx配置；创建网页文件；运行nginx。&lt;/p&gt;</content><author><name></name></author><summary type="html">Docker基本情况</summary></entry><entry><title type="html">学习OctoPress</title><link href="/2016/03/12/first-post.html" rel="alternate" type="text/html" title="学习OctoPress" /><published>2016-03-12T09:37:52+08:00</published><updated>2016-03-12T09:37:52+08:00</updated><id>/2016/03/12/first-post</id><content type="html" xml:base="/2016/03/12/first-post.html">&lt;h1 id=&quot;octopress&quot;&gt;学习OctoPress搭建博客&lt;/h1&gt;
+&lt;p&gt;安装nginx、vim；编辑nginx配置；创建网页文件；运行nginx。&lt;/p&gt;</content><author><name></name></author><summary type="html">Docker基本情况</summary></entry><entry><title type="html">学习OctoPress</title><link href="http://localhost:4000/2016/03/12/first-post.html" rel="alternate" type="text/html" title="学习OctoPress" /><published>2016-03-12T09:37:52+08:00</published><updated>2016-03-12T09:37:52+08:00</updated><id>http://localhost:4000/2016/03/12/first-post</id><content type="html" xml:base="http://localhost:4000/2016/03/12/first-post.html">&lt;h1 id=&quot;学习octopress搭建博客&quot;&gt;学习OctoPress搭建博客&lt;/h1&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;一些小问题&lt;/h2&gt;
+&lt;h2 id=&quot;一些小问题&quot;&gt;一些小问题&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;修改Gemfile，修改source为 &lt;code class=&quot;highlighter-rouge&quot;&gt;https://ruby.taobao.com&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;一些例子&lt;/h2&gt;
+&lt;h2 id=&quot;一些例子&quot;&gt;一些例子&lt;/h2&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;java This is a java demo
 public class Demo {
