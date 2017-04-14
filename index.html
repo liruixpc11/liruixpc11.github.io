@@ -1,350 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>哈哈爱护的吧地博客</title>
-	<meta name="author" content="哈哈爱护的吧">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	
-	<meta name="description" content="主要性能优化点 判断是否还有包的时候，调用了FileChannel的position和size函数；改为自行计算后，时间从800+ms降到了500+ms。经过本步骤优化后，性能主要瓶颈在IO上。
-使用BufferedInputStream代替FileChannel，时间从500+ms降低到100 &hellip;">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Li Rui&#39;s Blog</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search resu...">
 
-	<link href="/atom.xml" rel="alternate" title="哈哈爱护的吧地博客" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/favicon.png" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="/">
+  <link rel="alternate" type="application/rss+xml" title="Li Rui&#39;s Blog" href="/feed.xml">
+  
+  
 </head>
 
 
-<body>
-	<header id="header" class="inner"><h1><a href="/">哈哈爱护的吧地博客</a></h1>
-<nav id="main-nav"><ul class="main">
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archives</a></li>
-    <li><a href="/about/">About Me</a></li>
-</ul>
-</nav>
-<nav id="mobile-nav">
-	<div class="alignleft menu">
-		<a class="button">Menu</a>
-		<div class="container"><ul class="main">
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archives</a></li>
-    <li><a href="/about/">About Me</a></li>
-</ul>
-</div>
-	</div>
-	<div class="alignright search">
-		<a class="button"></a>
-		<div class="container">
-			<form action="https://www.baidu.com" method="get">
-				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:liruixpc11.github.io">
-			</form>
-		</div>
-	</div>
-</nav>
-<nav id="sub-nav" class="alignright">
-	<div class="social">
-		
-		
-		
-		
-    
-		
-		
-		
-		
-		
-		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
-		
-    
-	</div>
-	<form class="search" action="https://www.baidu.com" method="get">
-		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:liruixpc11.github.io">
-	</form>
-</nav>
+  <body>
 
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="/">Li Rui&#39;s Blog</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+            <a class="page-link" href="/about/">About</a>
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
 </header>
-	
-		
-	
-	<div id="content" class="inner">
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2016/04/10/pcap-parser/">
-		
-			Pcap文件Java解析器调优记</a>
-	</h2>
-	<div class="entry-content">
-		<h1>主要性能优化点</h1>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="home">
 
-<ol>
-<li>判断是否还有包的时候，调用了FileChannel的position和size函数；改为自行计算后，时间从800+ms降到了500+ms。经过本步骤优化后，性能主要瓶颈在IO上。</li>
-<li>使用BufferedInputStream代替FileChannel，时间从500+ms降低到100+ms，性能提升的原因是使用缓存可以降低IO次数。经过本步骤优化后，性能开销的大约1/3到1/2花在了解析上。</li>
-<li>原来以为反射会降低性能，但是改用侵入式接口直接读取数组后，性能提升大约5-10%。如果字段很多或者调用很多次的话是值得优化的。</li>
-<li>使用new代替反射调用Constructor，大约168ms→142ms，性能提升约10%。</li>
-</ol>
+  <h1 class="page-heading">Posts</h1>
+  
+  
 
 
-<p>性能参照：仅仅读取内容和必要的长度字段，不解析其它内容，大约是90 -100ms。</p>
-
-<h1>非性能优化点</h1>
-
-<ol>
-<li>重用PacketHeader的16字节缓冲区，而不是每次都调用ByteBuffer.allocate分配；性能基本不变。</li>
-</ol>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Apr 10th, 2016</div>
-	<div class="tags">
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2016/03/12/docker-study-01/">
-		
-			Docker学习01</a>
-	</h2>
-	<div class="entry-content">
-		<h1>Docker基本情况</h1>
-
-<h2>隔离</h2>
-
-<ul>
-<li>文件系统</li>
-<li>进程</li>
-<li>网络</li>
-<li>资源隔离与分组，通过cgroups</li>
-</ul>
-
-
-<h2>数据卷</h2>
-
-<p>可以方便的用于文件共享；只读挂载可以方便的放置 <strong>FLAG</strong>。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>docker run -v /data:/datavolume:ro
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>数据卷容器可以方便地实现多个容器之间的数据共享。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>docker run --volumes-from CNAME
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>常用命令</h2>
-
-<h3>容器控制</h3>
-
-<ul>
-<li>docker run：运行</li>
-<li>Ctrl-P Ctrl-Q： 退出挂载</li>
-<li>docker attach：挂载</li>
-<li>docker start：启动容器，可以使用 <strong>-i</strong> 选项</li>
-<li>docker exec：在运行的容器中执行命令</li>
-<li>docker stop：停止容器，实际就是发送Ctrl-C</li>
-<li>docker kill：停止容器，直接终止进程</li>
-</ul>
-
-
-<h2>构建Docker镜像</h2>
-
-<ul>
-<li>docker commit</li>
-<li>Dockerfile</li>
-</ul>
-
-
-<h3>Dockerfile</h3>
-
-<p>思路值得借鉴，从一个现有基础镜像出发，根据配置文件自动化地生成新的镜像。但是Windows有些软件安装和配置如何从命令行完成需要进一步探索。</p>
-
-<h2>Docker网络连接</h2>
-
-<h3>基于Linux网桥</h3>
-
-<p>类似于VMware Workstation中的HostOnly模式，允许主机、虚拟机之间通信。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>apt-get install bridge-utils
-</span><span class='line'>brctl add br0
-</span><span class='line'>ifconfig br0 192.168.xx.1/24
-</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;DOCKER_OPTS=&quot;-b br0&quot;&#39;</span> &gt;&gt; /etc/default/docker
-</span><span class='line'>service docker restart
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>有个问题需要注意：每次启动的时候，虚拟机的IP地址都可能不一样。但是可以通过<code>--link=cname:alias</code>来指定主机内部别名。</p>
-
-<h3>通过iptables控制容器间网络连接</h3>
-
-<p>通过<code>--icc=false --iptables=true</code>启用，在DOCKER规则链中控制容器间连接。通过<code>--link</code>选项确定哪些容器之间可以连接。</p>
-
-<h3>与外部网络的连接</h3>
-
-<p>查看IP转发是否开启：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo sysctl net.ipv4.conf.all.forwarding
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>通过iptables限制外部对容器的访问，例如：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>iptables -I DOCKER -s src_ip -d dst_ip -p TCP --dport <span class="m">80</span> -j DROP
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>使用Open vSwitch实现跨服务器连接</h3>
-
-<p>创建Open vSwitch接口，然后挂载到bridge上。</p>
-
-<h2>搭建Docker私有Registry</h2>
-
-<h2>实例</h2>
-
-<h3>创建Web站点</h3>
-
-<p>创建导出80端口的容器：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>docker run -p <span class="m">80</span> --name web -it ubuntu /bin/bash
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>安装nginx、vim；编辑nginx配置；创建网页文件；运行nginx。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Mar 12th, 2016</div>
-	<div class="tags">
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2016/03/12/first-post/">
-		
-			学习OctoPress</a>
-	</h2>
-	<div class="entry-content">
-		<h1>学习OctoPress搭建博客</h1>
-
-<h2>一些小问题</h2>
-
-<ol>
-<li>修改Gemfile，修改source为 <code>https://ruby.taobao.com</code></li>
-</ol>
-
-
-<h2>一些例子</h2>
-
-<figure class='code'><figcaption><span>This is a java demo</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
-</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;hello, world&quot;</span><span class="o">);</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Mar 12th, 2016</div>
-	<div class="tags">
-
-</div>
-	
-</div>
-</article>
-
-<nav id="pagenavi">
+  <ul class="post-list">
     
-    
-    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
-</nav>
-</div>
-	<footer id="footer" class="inner">Copyright &copy; 2017
+      <li>
+        
+        <span class="post-meta">Apr 14, 2017</span>
 
-    哈哈爱护的吧
+        <h2>
+          <a class="post-link" href="/jekyll/update/2017/04/14/welcome-to-jekyll.html">Welcome to Jekyll!</a>
+        </h2>
+      </li>
+    
+      <li>
+        
+        <span class="post-meta">Apr 14, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/04/14/using-octopress.html">Using Octopress</a>
+        </h2>
+      </li>
+    
+      <li>
+        
+        <span class="post-meta">Jan 26, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/misc/2017/01/26/compile-ns2-in-linux-mint-18.html">Compile ns2 in Linux Mint 18</a>
+        </h2>
+      </li>
+    
+      <li>
+        
+        <span class="post-meta">Apr 10, 2016</span>
+
+        <h2>
+          <a class="post-link" href="/2016/04/10/pcap-parser.html">Pcap文件Java解析器调优记</a>
+        </h2>
+      </li>
+    
+      <li>
+        
+        <span class="post-meta">Mar 12, 2016</span>
+
+        <h2>
+          <a class="post-link" href="/2016/03/12/docker-study-01.html">Docker学习01</a>
+        </h2>
+      </li>
+    
+      <li>
+        
+        <span class="post-meta">Mar 12, 2016</span>
+
+        <h2>
+          <a class="post-link" href="/2016/03/12/first-post.html">学习OctoPress</a>
+        </h2>
+      </li>
+    
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+
+</div>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Li Rui&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Li Rui&#39;s Blog
+            
+            </li>
+            
+            <li><a href="mailto:lirui3252007012@gmail.com">lirui3252007012@gmail.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/liruixpc11"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">liruixpc11</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/liruixpc11"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">liruixpc11</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
 
 </footer>
-	<script src="/javascripts/slash.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox();
-})(jQuery);
-</script> <!-- Delete or comment this line to disable Fancybox -->
 
 
+  </body>
 
-
-
-
-</body>
 </html>
