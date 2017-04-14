@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Docker学习01"
 date: 2016-03-12 20:19:16 +0800
 comments: true

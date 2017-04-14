@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Compile ns2 in Linux Mint 18"
 date: 2017-01-26 08:33:17 +0800
 comments: true
