@@ -19,12 +19,12 @@
 
 
 
-<title>Compile ns2 in Linux Mint 18 - Li Rui’s blog</title>
+<title>Spark Environment - Li Rui’s blog</title>
 
 
 
 
-<meta name="description" content="编译NS2的时候，${NS_DIR}/ns-2.35/linkstate/ls.h报错：erase not in this scope（大概是这样，记不清了）。修改该文件的第137行如下：">
+<meta name="description" content="搭建Spark环境">
 
 
 
@@ -33,15 +33,15 @@
 
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Li Rui's blog">
-<meta property="og:title" content="Compile ns2 in Linux Mint 18">
+<meta property="og:title" content="Spark Environment">
 
 
-  <link rel="canonical" href="http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/">
-  <meta property="og:url" content="http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/">
+  <link rel="canonical" href="http://liruixpc11.github.io/spark-environment/">
+  <meta property="og:url" content="http://liruixpc11.github.io/spark-environment/">
 
 
 
-  <meta property="og:description" content="编译NS2的时候，${NS_DIR}/ns-2.35/linkstate/ls.h报错：erase not in this scope（大概是这样，记不清了）。修改该文件的第137行如下：">
+  <meta property="og:description" content="搭建Spark环境">
 
 
 
@@ -56,7 +56,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-01-26T08:33:17+08:00">
+  <meta property="article:published_time" content="2017-05-18T22:01:55+08:00">
 
 
 
@@ -257,15 +257,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Compile ns2 in Linux Mint 18">
-    <meta itemprop="description" content="编译NS2的时候，${NS_DIR}/ns-2.35/linkstate/ls.h报错：erase not in this scope（大概是这样，记不清了）。修改该文件的第137行如下：">
-    <meta itemprop="datePublished" content="January 26, 2017">
+    <meta itemprop="headline" content="Spark Environment">
+    <meta itemprop="description" content="搭建Spark环境">
+    <meta itemprop="datePublished" content="May 18, 2017">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Compile ns2 in Linux Mint 18
+          <h1 class="page__title" itemprop="headline">Spark Environment
 </h1>
           
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
@@ -280,15 +280,23 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>编译NS2的时候，<code class="highlighter-rouge">${NS_DIR}/ns-2.35/linkstate/ls.h</code>报错：<code class="highlighter-rouge">erase not in this scope</code>（大概是这样，记不清了）。修改该文件的第137行如下：</p>
+        <h1 id="搭建spark环境">搭建Spark环境</h1>
 
-<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">eraseAll</span><span class="p">()</span> <span class="p">{</span> <span class="n">erase</span><span class="p">(</span><span class="n">baseMap</span><span class="o">::</span><span class="n">begin</span><span class="p">(),</span> <span class="n">baseMap</span><span class="o">::</span><span class="n">end</span><span class="p">());</span> <span class="p">}</span>
-</code></pre>
-</div>
+<h2 id="基本情况">基本情况</h2>
 
-<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">eraseAll</span><span class="p">()</span> <span class="p">{</span> <span class="n">baseMap</span><span class="o">::</span><span class="n">erase</span><span class="p">(</span><span class="n">baseMap</span><span class="o">::</span><span class="n">begin</span><span class="p">(),</span> <span class="n">baseMap</span><span class="o">::</span><span class="n">end</span><span class="p">());</span> <span class="p">}</span>
-</code></pre>
-</div>
+<p>目标：搭建Spark开发环境，使用Python语言，默认使用<code class="highlighter-rouge">ipython</code>，并支持使用<code class="highlighter-rouge">jupyter notebook</code>进行交互式数据分析。</p>
+
+<p>运行环境：Ubuntu 16.04 x64 server + ipython 5.3.0 (with NumPy/SciPy/Matplotlib/Pandas) + jupyter 4.3.0 + Spark 2.1.1 with hadoop2.7</p>
+
+<h2 id="搭建步骤">搭建步骤</h2>
+
+<ol>
+  <li>从官网下载二进制安装包；</li>
+  <li>解压并设置相关环境变量，<code class="highlighter-rouge">export SPARK_HOME=${HOME}/spark; export PATH=$PATH:$SPARK_HOME/bin</code>；</li>
+  <li>配置默认使用ipython，添加环境变量<code class="highlighter-rouge">export PYSPARK_DRIVER_PYTHON=/usr/local/bin/ipython; export PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --ip=0.0.0.0"</code>；</li>
+  <li>现在，可以运行<code class="highlighter-rouge">pyspark</code>了。</li>
+</ol>
+
 
         
       </section>
@@ -298,27 +306,8 @@
         
 
 
-  
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> 分类: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="http://liruixpc11.github.io/categories/#misc" class="page__taxonomy-item" rel="tag">MISC</a>
-    
-    </span>
-  </p>
-
-
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> 最新的:</strong> <time datetime="2017-01-26T08:33:17+08:00">January 26, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> 最新的:</strong> <time datetime="2017-05-18T22:01:55+08:00">May 18, 2017</time></p>
         
       </footer>
 
@@ -327,24 +316,24 @@
     <h4 class="page__share-title">分享</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Compile ns2 in Linux Mint 18 http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/" class="btn btn--twitter" title="分享 Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Spark Environment http://liruixpc11.github.io/spark-environment/" class="btn btn--twitter" title="分享 Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/" class="btn btn--facebook" title="分享 Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://liruixpc11.github.io/spark-environment/" class="btn btn--facebook" title="分享 Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/" class="btn btn--google-plus" title="分享 Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=http://liruixpc11.github.io/spark-environment/" class="btn btn--google-plus" title="分享 Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/" class="btn btn--linkedin" title="分享 LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://liruixpc11.github.io/spark-environment/" class="btn btn--linkedin" title="分享 LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="http://liruixpc11.github.io/pcap-parser/" class="pagination--pager" title="Pcap文件Java解析器调优记
+      <a href="http://liruixpc11.github.io/vm-remote-access-vnc-rdp-ssh/" class="pagination--pager" title="VM Remote Access(VNC/RDP/SSH)
 ">向前</a>
     
     
-      <a href="http://liruixpc11.github.io/using-octopress/" class="pagination--pager" title="Using Octopress
+      <a href="http://liruixpc11.github.io/using-mulval/" class="pagination--pager" title="Using MulVAL
 ">向后</a>
     
   </nav>

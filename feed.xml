@@ -1,4 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:1234/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:1234/" rel="alternate" type="text/html" /><updated>2017-04-27T09:06:53+08:00</updated><id>http://localhost:1234/</id><title type="html">Li Rui’s blog</title><subtitle>An amazing website.</subtitle><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:1234/jekyll/update/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-04-14T12:23:41+08:00</published><updated>2017-04-14T12:23:41+08:00</updated><id>http://localhost:1234/jekyll/update/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:1234/jekyll/update/welcome-to-jekyll/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://liruixpc11.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://liruixpc11.github.io/" rel="alternate" type="text/html" /><updated>2017-06-07T09:21:40+08:00</updated><id>http://liruixpc11.github.io/</id><title type="html">Li Rui’s blog</title><subtitle>An amazing website.</subtitle><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><entry><title type="html">Using MulVAL</title><link href="http://liruixpc11.github.io/using-mulval/" rel="alternate" type="text/html" title="Using MulVAL" /><published>2017-06-07T08:42:53+08:00</published><updated>2017-06-07T08:42:53+08:00</updated><id>http://liruixpc11.github.io/using-mulval</id><content type="html" xml:base="http://liruixpc11.github.io/using-mulval/">&lt;h1 id=&quot;使用mulval&quot;&gt;使用MulVAL&lt;/h1&gt;
+
+&lt;p&gt;MulVAL是基于逻辑推理的网络安全分析工具，能够实现网络攻击路径发现和策略违规发现。2005年提出，是X Ou的博士论文成果。在2005年时，2000个节点规模网络的分析时间不超过1分钟。&lt;/p&gt;
+
+&lt;h2 id=&quot;环境搭建&quot;&gt;环境搭建&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.arguslab.org/mulval.html&quot;&gt;项目主页&lt;/a&gt;，&lt;a href=&quot;http://www.arguslab.org/software/mulval_1_1.tar.gz&quot;&gt;v1.1软件包下载&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;安装步骤如下（&lt;code class=&quot;highlighter-rouge&quot;&gt;doc/README&lt;/code&gt;文件中有很多有用信息）：&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# install XSB&lt;/span&gt;
+wget &lt;span class=&quot;s2&quot;&gt;&quot;http://xsb.sourceforge.net/downloads/XSB.tar.gz&quot;&lt;/span&gt;
+tar xvf XSB.tar.gz
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;XSB/build
+./configure
+./makexsb
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;XSB_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+
+&lt;span class=&quot;c&quot;&gt;# download&lt;/span&gt;
+wget &lt;span class=&quot;s2&quot;&gt;&quot;http://www.arguslab.org/software/mulval_1_1.tar.gz&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# uncompress&lt;/span&gt;
+tar xvf mulval_1_1.tar.gz
+
+&lt;span class=&quot;c&quot;&gt;# make &lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;mulval
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MULVALROOT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+make
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;案例测试&quot;&gt;案例测试&lt;/h2&gt;
+
+&lt;p&gt;运行前要确保以下环境变量已设置：&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MULVALROOT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;&amp;gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;XSB_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;&amp;gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$MULVALROOT&lt;/span&gt;/bin:&lt;span class=&quot;nv&quot;&gt;$MULVALROOT&lt;/span&gt;/utils:&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;XSB_HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;执行以下命令（&lt;code class=&quot;highlighter-rouge&quot;&gt;-v&lt;/code&gt;选项表示生成&lt;code class=&quot;highlighter-rouge&quot;&gt;.csv&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;.pdf&lt;/code&gt;格式的攻击图，&lt;code class=&quot;highlighter-rouge&quot;&gt;-p&lt;/code&gt;表示对攻击图进行裁剪以优化视觉效果），执行成功后可以打开生成的&lt;code class=&quot;highlighter-rouge&quot;&gt;AttackGraph.pdf&lt;/code&gt;文件查看攻击图：&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$MULVALROOT&lt;/span&gt;/testcases/3host
+graph_gen.sh input.P -v -p
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">使用MulVAL</summary></entry><entry><title type="html">Spark Environment</title><link href="http://liruixpc11.github.io/spark-environment/" rel="alternate" type="text/html" title="Spark Environment" /><published>2017-05-18T22:01:55+08:00</published><updated>2017-05-18T22:01:55+08:00</updated><id>http://liruixpc11.github.io/spark-environment</id><content type="html" xml:base="http://liruixpc11.github.io/spark-environment/">&lt;h1 id=&quot;搭建spark环境&quot;&gt;搭建Spark环境&lt;/h1&gt;
+
+&lt;h2 id=&quot;基本情况&quot;&gt;基本情况&lt;/h2&gt;
+
+&lt;p&gt;目标：搭建Spark开发环境，使用Python语言，默认使用&lt;code class=&quot;highlighter-rouge&quot;&gt;ipython&lt;/code&gt;，并支持使用&lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter notebook&lt;/code&gt;进行交互式数据分析。&lt;/p&gt;
+
+&lt;p&gt;运行环境：Ubuntu 16.04 x64 server + ipython 5.3.0 (with NumPy/SciPy/Matplotlib/Pandas) + jupyter 4.3.0 + Spark 2.1.1 with hadoop2.7&lt;/p&gt;
+
+&lt;h2 id=&quot;搭建步骤&quot;&gt;搭建步骤&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;从官网下载二进制安装包；&lt;/li&gt;
+  &lt;li&gt;解压并设置相关环境变量，&lt;code class=&quot;highlighter-rouge&quot;&gt;export SPARK_HOME=${HOME}/spark; export PATH=$PATH:$SPARK_HOME/bin&lt;/code&gt;；&lt;/li&gt;
+  &lt;li&gt;配置默认使用ipython，添加环境变量&lt;code class=&quot;highlighter-rouge&quot;&gt;export PYSPARK_DRIVER_PYTHON=/usr/local/bin/ipython; export PYSPARK_DRIVER_PYTHON_OPTS=&quot;notebook --no-browser --ip=0.0.0.0&quot;&lt;/code&gt;；&lt;/li&gt;
+  &lt;li&gt;现在，可以运行&lt;code class=&quot;highlighter-rouge&quot;&gt;pyspark&lt;/code&gt;了。&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">搭建Spark环境</summary></entry><entry><title type="html">VM Remote Access(VNC/RDP/SSH)</title><link href="http://liruixpc11.github.io/vm-remote-access-vnc-rdp-ssh/" rel="alternate" type="text/html" title="VM Remote Access(VNC/RDP/SSH)" /><published>2017-04-27T09:20:50+08:00</published><updated>2017-04-27T09:20:50+08:00</updated><id>http://liruixpc11.github.io/vm-remote-access-vnc-rdp-ssh</id><content type="html" xml:base="http://liruixpc11.github.io/vm-remote-access-vnc-rdp-ssh/">&lt;h1 id=&quot;vm-remote-access-vncrdpssh&quot;&gt;VM Remote Access (VNC/RDP/SSH)&lt;/h1&gt;
+
+&lt;h2 id=&quot;vnc&quot;&gt;VNC&lt;/h2&gt;
+
+&lt;p&gt;解决方案：noVNC（前端） + websockify（WebSocket → VNC/TCP）。&lt;/p&gt;
+
+&lt;p&gt;当前的问题：现在使用的基于Python的websockify服务在性能方面存在一些问题，在连接一段时间之后有很大概率会断开。在高性能约束条件下，需要重新选取一个更高性能的工具。&lt;/p&gt;
+
+&lt;h2 id=&quot;rdp&quot;&gt;RDP&lt;/h2&gt;
+
+&lt;p&gt;有几种备选方案：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RDPWebClient, from VirtualBox project，flash-based.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/FreeRDP/FreeRDP-WebConnect&quot;&gt;FreeRDP-WebConnect&lt;/a&gt;, HTML5-based.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rdpwebclient&quot;&gt;RDPWebClient&lt;/h3&gt;
+
+&lt;p&gt;包含在VirtualBox的SDK里面。&lt;/p&gt;
+
+&lt;p&gt;现在还没有测试成功直接连接Windows的RDP服务，报&lt;code class=&quot;highlighter-rouge&quot;&gt;E: TCP: SECURITY_ERROR Error #2048&lt;/code&gt;错。&lt;/p&gt;
+
+&lt;h3 id=&quot;freerdp&quot;&gt;FreeRDP&lt;/h3&gt;
+
+&lt;h2 id=&quot;ssh&quot;&gt;SSH&lt;/h2&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">VM Remote Access (VNC/RDP/SSH)</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://liruixpc11.github.io/jekyll/update/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-04-14T12:23:41+08:00</published><updated>2017-04-14T12:23:41+08:00</updated><id>http://liruixpc11.github.io/jekyll/update/welcome-to-jekyll</id><content type="html" xml:base="http://liruixpc11.github.io/jekyll/update/welcome-to-jekyll/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
@@ -10,7 +95,7 @@
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Using Octopress</title><link href="http://localhost:1234/using-octopress/" rel="alternate" type="text/html" title="Using Octopress" /><published>2017-04-14T11:16:01+08:00</published><updated>2017-04-14T11:16:01+08:00</updated><id>http://localhost:1234/using-octopress</id><content type="html" xml:base="http://localhost:1234/using-octopress/">&lt;h1 id=&quot;using-octopress&quot;&gt;Using Octopress&lt;/h1&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Using Octopress</title><link href="http://liruixpc11.github.io/using-octopress/" rel="alternate" type="text/html" title="Using Octopress" /><published>2017-04-14T11:16:01+08:00</published><updated>2017-04-14T11:16:01+08:00</updated><id>http://liruixpc11.github.io/using-octopress</id><content type="html" xml:base="http://liruixpc11.github.io/using-octopress/">&lt;h1 id=&quot;using-octopress&quot;&gt;Using Octopress&lt;/h1&gt;
 
 &lt;h2 id=&quot;基本用法&quot;&gt;基本用法&lt;/h2&gt;
 
@@ -20,7 +105,19 @@
   &lt;li&gt;本地预览：&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;；&lt;/li&gt;
   &lt;li&gt;部署到github.io：&lt;code class=&quot;highlighter-rouge&quot;&gt;octopress deploy push&lt;/code&gt;；&lt;/li&gt;
   &lt;li&gt;同步源代码：&lt;code class=&quot;highlighter-rouge&quot;&gt;git add -A &amp;amp;&amp;amp; git commit -m 'MSG' &amp;amp;&amp;amp; git push&lt;/code&gt;。&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">Using Octopress</summary></entry><entry><title type="html">Compile ns2 in Linux Mint 18</title><link href="http://localhost:1234/misc/compile-ns2-in-linux-mint-18/" rel="alternate" type="text/html" title="Compile ns2 in Linux Mint 18" /><published>2017-01-26T08:33:17+08:00</published><updated>2017-01-26T08:33:17+08:00</updated><id>http://localhost:1234/misc/compile-ns2-in-linux-mint-18</id><content type="html" xml:base="http://localhost:1234/misc/compile-ns2-in-linux-mint-18/">&lt;p&gt;编译NS2的时候，&lt;code class=&quot;highlighter-rouge&quot;&gt;${NS_DIR}/ns-2.35/linkstate/ls.h&lt;/code&gt;报错：&lt;code class=&quot;highlighter-rouge&quot;&gt;erase not in this scope&lt;/code&gt;（大概是这样，记不清了）。修改该文件的第137行如下：&lt;/p&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;windows环境搭建&quot;&gt;Windows环境搭建&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装RubyInstaller；&lt;/li&gt;
+  &lt;li&gt;安装DevKit，在解压后的目录里面执行&lt;code class=&quot;highlighter-rouge&quot;&gt;ruby dk.rb init&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;ruby dk.rb install&lt;/code&gt;；&lt;/li&gt;
+  &lt;li&gt;切换源：&lt;code class=&quot;highlighter-rouge&quot;&gt;gem sources --add http://gems.ruby-china.org/ --remove https://rubygems.org/&lt;/code&gt;；&lt;/li&gt;
+  &lt;li&gt;安装包管理工具，&lt;code class=&quot;highlighter-rouge&quot;&gt;gem install bundler&lt;/code&gt;；&lt;/li&gt;
+  &lt;li&gt;在克隆出来的目录中执行&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;以安装依赖的包；&lt;/li&gt;
+  &lt;li&gt;安装证书：&lt;code class=&quot;highlighter-rouge&quot;&gt;curl -o C:/windows/ca.perm https://curl.haxx.se/ca/cacert.pem&lt;/code&gt;，在执行&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt;命令之前运行命令&lt;code class=&quot;highlighter-rouge&quot;&gt;export SSL_CERT_FILE=c:/windows/cacert.pem&lt;/code&gt;；&lt;/li&gt;
+  &lt;li&gt;执行&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;默认监听的端口是4000，和foxit服务（安装了福昕阅读器的计算机都可能有这个服务）冲突，需要关闭该服务或通过修改&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;port: &amp;lt;NEW_PORT&amp;gt;&lt;/code&gt;来避开端口冲突。&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">Using Octopress</summary></entry><entry><title type="html">Compile ns2 in Linux Mint 18</title><link href="http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/" rel="alternate" type="text/html" title="Compile ns2 in Linux Mint 18" /><published>2017-01-26T08:33:17+08:00</published><updated>2017-01-26T08:33:17+08:00</updated><id>http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18</id><content type="html" xml:base="http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/">&lt;p&gt;编译NS2的时候，&lt;code class=&quot;highlighter-rouge&quot;&gt;${NS_DIR}/ns-2.35/linkstate/ls.h&lt;/code&gt;报错：&lt;code class=&quot;highlighter-rouge&quot;&gt;erase not in this scope&lt;/code&gt;（大概是这样，记不清了）。修改该文件的第137行如下：&lt;/p&gt;
 
 &lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;eraseAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;erase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;baseMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;baseMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -28,7 +125,7 @@
 
 &lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;eraseAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;baseMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;erase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;baseMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;baseMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">编译NS2的时候，${NS_DIR}/ns-2.35/linkstate/ls.h报错：erase not in this scope（大概是这样，记不清了）。修改该文件的第137行如下：</summary></entry><entry><title type="html">Pcap文件Java解析器调优记</title><link href="http://localhost:1234/pcap-parser/" rel="alternate" type="text/html" title="Pcap文件Java解析器调优记" /><published>2016-04-10T22:02:45+08:00</published><updated>2016-04-10T22:02:45+08:00</updated><id>http://localhost:1234/pcap-parser</id><content type="html" xml:base="http://localhost:1234/pcap-parser/">&lt;h1 id=&quot;主要性能优化点&quot;&gt;主要性能优化点&lt;/h1&gt;
+&lt;/div&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">编译NS2的时候，${NS_DIR}/ns-2.35/linkstate/ls.h报错：erase not in this scope（大概是这样，记不清了）。修改该文件的第137行如下：</summary></entry><entry><title type="html">Pcap文件Java解析器调优记</title><link href="http://liruixpc11.github.io/pcap-parser/" rel="alternate" type="text/html" title="Pcap文件Java解析器调优记" /><published>2016-04-10T22:02:45+08:00</published><updated>2016-04-10T22:02:45+08:00</updated><id>http://liruixpc11.github.io/pcap-parser</id><content type="html" xml:base="http://liruixpc11.github.io/pcap-parser/">&lt;h1 id=&quot;主要性能优化点&quot;&gt;主要性能优化点&lt;/h1&gt;
 
 &lt;ol&gt;
   &lt;li&gt;判断是否还有包的时候，调用了FileChannel的position和size函数；改为自行计算后，时间从800+ms降到了500+ms。经过本步骤优化后，性能主要瓶颈在IO上。&lt;/li&gt;
@@ -43,7 +140,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;重用PacketHeader的16字节缓冲区，而不是每次都调用ByteBuffer.allocate分配；性能基本不变。&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">主要性能优化点</summary></entry><entry><title type="html">Docker学习01</title><link href="http://localhost:1234/docker-study-01/" rel="alternate" type="text/html" title="Docker学习01" /><published>2016-03-12T20:19:16+08:00</published><updated>2016-03-12T20:19:16+08:00</updated><id>http://localhost:1234/docker-study-01</id><content type="html" xml:base="http://localhost:1234/docker-study-01/">&lt;h1 id=&quot;docker基本情况&quot;&gt;Docker基本情况&lt;/h1&gt;
+&lt;/ol&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">主要性能优化点</summary></entry><entry><title type="html">Docker学习01</title><link href="http://liruixpc11.github.io/docker-study-01/" rel="alternate" type="text/html" title="Docker学习01" /><published>2016-03-12T20:19:16+08:00</published><updated>2016-03-12T20:19:16+08:00</updated><id>http://liruixpc11.github.io/docker-study-01</id><content type="html" xml:base="http://liruixpc11.github.io/docker-study-01/">&lt;h1 id=&quot;docker基本情况&quot;&gt;Docker基本情况&lt;/h1&gt;
 
 &lt;h2 id=&quot;隔离&quot;&gt;隔离&lt;/h2&gt;
 
@@ -142,7 +239,7 @@ service docker restart
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;安装nginx、vim；编辑nginx配置；创建网页文件；运行nginx。&lt;/p&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">Docker基本情况</summary></entry><entry><title type="html">学习OctoPress</title><link href="http://localhost:1234/first-post/" rel="alternate" type="text/html" title="学习OctoPress" /><published>2016-03-12T09:37:52+08:00</published><updated>2016-03-12T09:37:52+08:00</updated><id>http://localhost:1234/first-post</id><content type="html" xml:base="http://localhost:1234/first-post/">&lt;h1 id=&quot;学习octopress搭建博客&quot;&gt;学习OctoPress搭建博客&lt;/h1&gt;
+&lt;p&gt;安装nginx、vim；编辑nginx配置；创建网页文件；运行nginx。&lt;/p&gt;</content><author><name>Li Rui</name><email>lirui3252007012@sina.com</email><uri>https://liruixpc11.github.io</uri></author><summary type="html">Docker基本情况</summary></entry><entry><title type="html">学习OctoPress</title><link href="http://liruixpc11.github.io/first-post/" rel="alternate" type="text/html" title="学习OctoPress" /><published>2016-03-12T09:37:52+08:00</published><updated>2016-03-12T09:37:52+08:00</updated><id>http://liruixpc11.github.io/first-post</id><content type="html" xml:base="http://liruixpc11.github.io/first-post/">&lt;h1 id=&quot;学习octopress搭建博客&quot;&gt;学习OctoPress搭建博客&lt;/h1&gt;
 
 &lt;h2 id=&quot;一些小问题&quot;&gt;一些小问题&lt;/h2&gt;
 

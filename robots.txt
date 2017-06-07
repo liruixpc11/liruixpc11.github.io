@@ -1,1 +1,1 @@
-Sitemap: http://localhost:1234/sitemap.xml
+Sitemap: http://liruixpc11.github.io/sitemap.xml

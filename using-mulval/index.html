@@ -19,12 +19,12 @@
 
 
 
-<title>Compile ns2 in Linux Mint 18 - Li Rui’s blog</title>
+<title>Using MulVAL - Li Rui’s blog</title>
 
 
 
 
-<meta name="description" content="编译NS2的时候，${NS_DIR}/ns-2.35/linkstate/ls.h报错：erase not in this scope（大概是这样，记不清了）。修改该文件的第137行如下：">
+<meta name="description" content="使用MulVAL">
 
 
 
@@ -33,15 +33,15 @@
 
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Li Rui's blog">
-<meta property="og:title" content="Compile ns2 in Linux Mint 18">
+<meta property="og:title" content="Using MulVAL">
 
 
-  <link rel="canonical" href="http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/">
-  <meta property="og:url" content="http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/">
+  <link rel="canonical" href="http://liruixpc11.github.io/using-mulval/">
+  <meta property="og:url" content="http://liruixpc11.github.io/using-mulval/">
 
 
 
-  <meta property="og:description" content="编译NS2的时候，${NS_DIR}/ns-2.35/linkstate/ls.h报错：erase not in this scope（大概是这样，记不清了）。修改该文件的第137行如下：">
+  <meta property="og:description" content="使用MulVAL">
 
 
 
@@ -56,7 +56,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-01-26T08:33:17+08:00">
+  <meta property="article:published_time" content="2017-06-07T08:42:53+08:00">
 
 
 
@@ -257,15 +257,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Compile ns2 in Linux Mint 18">
-    <meta itemprop="description" content="编译NS2的时候，${NS_DIR}/ns-2.35/linkstate/ls.h报错：erase not in this scope（大概是这样，记不清了）。修改该文件的第137行如下：">
-    <meta itemprop="datePublished" content="January 26, 2017">
+    <meta itemprop="headline" content="Using MulVAL">
+    <meta itemprop="description" content="使用MulVAL">
+    <meta itemprop="datePublished" content="June 07, 2017">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Compile ns2 in Linux Mint 18
+          <h1 class="page__title" itemprop="headline">Using MulVAL
 </h1>
           
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
@@ -280,15 +280,53 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>编译NS2的时候，<code class="highlighter-rouge">${NS_DIR}/ns-2.35/linkstate/ls.h</code>报错：<code class="highlighter-rouge">erase not in this scope</code>（大概是这样，记不清了）。修改该文件的第137行如下：</p>
+        <h1 id="使用mulval">使用MulVAL</h1>
 
-<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">eraseAll</span><span class="p">()</span> <span class="p">{</span> <span class="n">erase</span><span class="p">(</span><span class="n">baseMap</span><span class="o">::</span><span class="n">begin</span><span class="p">(),</span> <span class="n">baseMap</span><span class="o">::</span><span class="n">end</span><span class="p">());</span> <span class="p">}</span>
+<p>MulVAL是基于逻辑推理的网络安全分析工具，能够实现网络攻击路径发现和策略违规发现。2005年提出，是X Ou的博士论文成果。在2005年时，2000个节点规模网络的分析时间不超过1分钟。</p>
+
+<h2 id="环境搭建">环境搭建</h2>
+
+<p><a href="http://www.arguslab.org/mulval.html">项目主页</a>，<a href="http://www.arguslab.org/software/mulval_1_1.tar.gz">v1.1软件包下载</a>。</p>
+
+<p>安装步骤如下（<code class="highlighter-rouge">doc/README</code>文件中有很多有用信息）：</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># install XSB</span>
+wget <span class="s2">"http://xsb.sourceforge.net/downloads/XSB.tar.gz"</span>
+tar xvf XSB.tar.gz
+<span class="nb">cd </span>XSB/build
+./configure
+./makexsb
+<span class="nb">cd</span> ..
+<span class="nb">export </span><span class="nv">XSB_HOME</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+<span class="nb">cd</span> ..
+
+<span class="c"># download</span>
+wget <span class="s2">"http://www.arguslab.org/software/mulval_1_1.tar.gz"</span>
+
+<span class="c"># uncompress</span>
+tar xvf mulval_1_1.tar.gz
+
+<span class="c"># make </span>
+<span class="nb">cd </span>mulval
+<span class="nb">export </span><span class="nv">MULVALROOT</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+make
 </code></pre>
 </div>
 
-<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">eraseAll</span><span class="p">()</span> <span class="p">{</span> <span class="n">baseMap</span><span class="o">::</span><span class="n">erase</span><span class="p">(</span><span class="n">baseMap</span><span class="o">::</span><span class="n">begin</span><span class="p">(),</span> <span class="n">baseMap</span><span class="o">::</span><span class="n">end</span><span class="p">());</span> <span class="p">}</span>
+<h2 id="案例测试">案例测试</h2>
+
+<p>运行前要确保以下环境变量已设置：</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">export </span><span class="nv">MULVALROOT</span><span class="o">=</span>&lt;&gt;
+<span class="nb">export </span><span class="nv">XSB_HOME</span><span class="o">=</span>&lt;&gt;
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$MULVALROOT</span>/bin:<span class="nv">$MULVALROOT</span>/utils:<span class="k">${</span><span class="nv">XSB_HOME</span><span class="k">}</span>/bin:<span class="nv">$PATH</span>
 </code></pre>
 </div>
+
+<p>执行以下命令（<code class="highlighter-rouge">-v</code>选项表示生成<code class="highlighter-rouge">.csv</code>和<code class="highlighter-rouge">.pdf</code>格式的攻击图，<code class="highlighter-rouge">-p</code>表示对攻击图进行裁剪以优化视觉效果），执行成功后可以打开生成的<code class="highlighter-rouge">AttackGraph.pdf</code>文件查看攻击图：</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> <span class="nv">$MULVALROOT</span>/testcases/3host
+graph_gen.sh input.P -v -p
+</code></pre>
+</div>
+
 
         
       </section>
@@ -298,27 +336,8 @@
         
 
 
-  
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> 分类: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="http://liruixpc11.github.io/categories/#misc" class="page__taxonomy-item" rel="tag">MISC</a>
-    
-    </span>
-  </p>
-
-
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> 最新的:</strong> <time datetime="2017-01-26T08:33:17+08:00">January 26, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> 最新的:</strong> <time datetime="2017-06-07T08:42:53+08:00">June 07, 2017</time></p>
         
       </footer>
 
@@ -327,25 +346,24 @@
     <h4 class="page__share-title">分享</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Compile ns2 in Linux Mint 18 http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/" class="btn btn--twitter" title="分享 Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Using MulVAL http://liruixpc11.github.io/using-mulval/" class="btn btn--twitter" title="分享 Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/" class="btn btn--facebook" title="分享 Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://liruixpc11.github.io/using-mulval/" class="btn btn--facebook" title="分享 Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/" class="btn btn--google-plus" title="分享 Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=http://liruixpc11.github.io/using-mulval/" class="btn btn--google-plus" title="分享 Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://liruixpc11.github.io/misc/compile-ns2-in-linux-mint-18/" class="btn btn--linkedin" title="分享 LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://liruixpc11.github.io/using-mulval/" class="btn btn--linkedin" title="分享 LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="http://liruixpc11.github.io/pcap-parser/" class="pagination--pager" title="Pcap文件Java解析器调优记
+      <a href="http://liruixpc11.github.io/spark-environment/" class="pagination--pager" title="Spark Environment
 ">向前</a>
     
     
-      <a href="http://liruixpc11.github.io/using-octopress/" class="pagination--pager" title="Using Octopress
-">向后</a>
+      <a href="#" class="pagination--pager disabled">向后</a>
     
   </nav>
 
